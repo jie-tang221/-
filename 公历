@@ -1,0 +1,51 @@
+coding:utf-8
+import time
+print("当前时间： ",time.strftime('%Y.%m.%d \n            %H:%M:%S ',time.localtime(time.time())))
+def leap_year(year):#判断平闰年
+    if year%4==0 and year%100!=0 or year%400==0:
+        return True
+    else:
+        return False
+    
+
+
+def getMonthDays(year,month):#得到每个年份每月的天数
+    days = 31
+    if month == 2 :
+        if leap_year(year):
+            days=29
+        else:
+            days=28
+    elif month==4 or month==6 or month==9 or month==11:
+        days=30
+    return days
+
+def getTotalDays(year,month):#得到从公元1月1日起至今一共多少天
+    totalDays=0
+    for i in range(1,year):
+        if leap_year(i):
+            totalDays += 366
+        else:
+            totalDays += 365
+    for i in range(1,month):
+        totalDays +=getMonthDays(year,i)
+    return totalDays
+month = int(input("请输入月份："))
+day=int(input("请输入日期："))
+from colorama import init
+from colorama import Fore,Back,Style
+init()
+iCount = 0
+print ("日\t一\t二\t三\t四\t五\t六")
+for i in range(1,(getTotalDays(year,month)%7)+2):
+    print ("\t",end="")
+    iCount+=1
+for i in range(1,getMonthDays(year,month)+1):
+    if i==day:
+        print(Fore.RED+ str(i),"\t",end="")
+        print(Style.RESET_ALL,end="")
+    else:
+        print (i,"\t",end="")
+    iCount +=1
+    if iCount%7 == 0 :
+        print ('')
