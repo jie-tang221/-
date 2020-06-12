@@ -1,0 +1,34 @@
+>>> import turtle
+>>> screen=turtle.Screen()
+>>> t=turtle.Turtle()
+>>> t.up()
+>>> for i in range(60):
+t.forward(150)
+t.down()
+if i%5==0:
+t.forward(30)
+t.up()
+t.backward(180)
+t.right(6)
+else:
+t.forward(10)
+t.up()
+t.backward(160)
+t.right(6)
+
+
+>>>x=input(‘please input hour:’)
+>>>m=input(‘please input minute:’)
+>>>y=int(x)*30
+>>>n=int(m)*6
+>>>t.left(90)
+>>>t.pensize(4)
+>>>t.right(y)
+>>>t.forward(70)
+>>>t.backward(70)
+>>>t.left(y)
+>>>t.pensize(3)
+>>>t.right(n)
+>>>t.forward(90)
+>>>t.backward(90)
+>>>t.left(n)
